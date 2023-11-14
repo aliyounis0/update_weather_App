@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/views/home_view.dart';
+import 'package:weather_app/views/splash_view.dart';
 
 void main() {
-  runApp(const WeatherApp());
+  runApp(const MyApp());
 }
 
-class WeatherApp extends StatelessWidget {
-  const WeatherApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomeView(),
+      home: SplashView(),
     );
   }
 }
