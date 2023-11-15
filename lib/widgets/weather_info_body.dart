@@ -13,9 +13,11 @@ class WeatherInfoBody extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
           colors: [
             getAppColor(weatherModel.weatherStatus),
-            getAppColor(weatherModel.weatherStatus)[100]!,
+            getAppColor(weatherModel.weatherStatus)[200]!,
             getAppColor(weatherModel.weatherStatus)[50]!,
           ],
         ),
@@ -33,7 +35,7 @@ class WeatherInfoBody extends StatelessWidget {
               ),
             ),
             Text(
-              weatherModel.lastUpdate,
+              "Update at ${weatherModel.lastUpdate.hour}:${weatherModel.lastUpdate.minute}",
               style: const TextStyle(
                 fontSize: 24,
               ),
@@ -44,9 +46,11 @@ class WeatherInfoBody extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.network(
-                  weatherModel.image,
-                ),
+                weatherModel.image.contains("http:")
+                    ? Image.network(weatherModel.image)
+                    : Image.network(
+                        "http:${weatherModel.image}",
+                      ),
                 Text(
                   weatherModel.avgTemp.toString(),
                   style: const TextStyle(
@@ -126,6 +130,7 @@ MaterialColor getAppColor(String? weatherState) {
     case "Torrential rain shower":
     case "Light rain with thunder":
     case "Moderate or heavy rain with thunder":
+    case "Patchy rain possible":
       return Colors.lightBlue;
     case "Patchy snow":
     case "Blowing snow":

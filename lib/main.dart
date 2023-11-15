@@ -20,8 +20,13 @@ class MyApp extends StatelessWidget {
         return BlocBuilder<WeatherCubit, WeatherStates>(
           builder: (context, state) {
             return MaterialApp(
+              debugShowCheckedModeBanner: false,
               home: const SplashView(),
               theme: ThemeData(
+                appBarTheme: const AppBarTheme(
+                  elevation: 0,
+                ),
+                fontFamily: "appFont",
                 primarySwatch: getAppColor(
                   BlocProvider.of<WeatherCubit>(context)
                       .weatherModel

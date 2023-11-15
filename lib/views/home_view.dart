@@ -14,7 +14,14 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Weather App'),
+          centerTitle: true,
+          elevation: 0,
+          title: const Text(
+            'Forecast',
+            style: TextStyle(
+              fontSize: 30,
+            ),
+          ),
           actions: [
             IconButton(
               onPressed: () {
@@ -24,7 +31,10 @@ class HomeView extends StatelessWidget {
                   ),
                 );
               },
-              icon: const Icon(Icons.search_off_outlined),
+              icon: const Icon(
+                Icons.search_outlined,
+                size: 30,
+              ),
             ),
           ],
         ),
